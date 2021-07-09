@@ -1,4 +1,4 @@
-import { ProductsService } from "./dto/products.service";
+import { ProductsService } from "./products.service";
 import {
   Body,
   Controller,
@@ -20,7 +20,6 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {} // inject service контроллер
 
   @Get()
-  @Redirect("https://goole.com", 301)
   getAll(): Promise<Product[]> {
     return this.productsService.getAll(); //делегирование событий для service
   }
