@@ -1,12 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get } from "@nestjs/common";
+import { AppService } from "./app.service";
 
-@Controller()
+@Controller() //Декоратор
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) {} // исп dependency injection для исп. AppService
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return "hello very fine ";
   }
 }
