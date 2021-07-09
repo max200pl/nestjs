@@ -1,14 +1,14 @@
 import { Module } from "@nestjs/common";
-import { ProductsModule } from "./products/products.module";
-import { AppService } from "./app.service";
-import { AppController } from "./app.controller";
 import { MongooseModule } from "@nestjs/mongoose";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { ProductsModule } from "./products/products.module";
 
 @Module({
   imports: [
     ProductsModule,
     MongooseModule.forRoot(
-      "mongodb+srv://max200pl:29121994mO111@cluster0.bmnyz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+      `mongodb+srv://max200pl:29121994mO111@cluster0.bmnyz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
     ),
   ],
   controllers: [AppController],

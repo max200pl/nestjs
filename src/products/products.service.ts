@@ -1,9 +1,10 @@
-import { UpdateProductDto } from "./dto/update-productDto";
-import { CreateProductDto } from "./dto/create-product.dto";
-import { Product, ProductDocument } from "./schemas/product.schema";
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
+import { CreateProductDto } from "./dto/create-product.dto";
+import { Product, ProductDocument } from "./schemas/product.schema";
+import { UpdateProductDto } from "./dto/update-product.dto";
+
 @Injectable()
 export class ProductsService {
   constructor(
@@ -19,7 +20,7 @@ export class ProductsService {
     return this.productModel.findById(id);
   }
 
-  create(productDto: CreateProductDto): Promise<Product> {
+  async create(productDto: CreateProductDto): Promise<Product> {
     const newProduct = new this.productModel(productDto);
     return newProduct.save();
   }
