@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Put } from "@nestjs/common";
+import { Body, Controller, Get, Post, Put, Param } from "@nestjs/common";
+import { json } from "express";
 
 @Controller("students")
 export class StudentController {
@@ -8,17 +9,19 @@ export class StudentController {
   }
 
   @Get("/:studentId")
-  getStudentsById() {
-    return;
+  getStudentsById(@Param("studentId") studentId: string) {
+    return `Get Student Whit Id of ${studentId}`;
   }
 
   @Post()
-  cerateStudent() {
-    return "Get student";
+  cerateStudent(@Body() body) {
+    return `Get student ${JSON.stringify(body)}`; // ${JSON.stringify(body)} ==> получить данные в строковом представлении
   }
 
   @Put("/:studentId")
-  updateStudent() {
-    return "Update student";
+  updateStudent(@Param("studentId") studentId: string, @Body() body) {
+    return `Update student With Id of ${studentId} With Data of ${JSON.stringify(
+      body
+    )} `;
   }
 }
